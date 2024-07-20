@@ -16,4 +16,8 @@ class QuizQuestion {
   void setUserAnsware(QuizAnsware answare) {
     userAnsware = answare;
   }
+
+  void reset() {
+    userAnsware = null;
+  }
 }
