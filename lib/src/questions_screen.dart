@@ -4,7 +4,9 @@ import 'package:quiz_app/src/answare_button.dart';
 import 'package:quiz_app/src/data/questions.dart';
 
 class QuestionsScreen extends StatefulWidget {
-  const QuestionsScreen({super.key});
+  final void Function()? onEndQuiz;
+
+  const QuestionsScreen({super.key, this.onEndQuiz});
 
   @override
   State<QuestionsScreen> createState() {
@@ -19,8 +21,8 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
     setState(() {
       if (currentQuestion < quizQuestions.length - 1) {
         ++currentQuestion;
-      } else {
-        currentQuestion = 0;
+      } else if(widget.onEndQuiz != null) {
+         widget.onEndQuiz!();
       }
     });
   }
@@ -55,7 +57,10 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
                 .map((answare) {
               return AnswareButton(
                 answare.text,
-                onButtonPressed: updateCurrentQuestion,
+                onButtonPressed: (){
+                  quizQuestions[currentQuestion].setUserAnsware(answare);
+                  updateCurrentQuestion();
+                },
               );
             }),
           ],
