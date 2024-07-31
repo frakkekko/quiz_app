@@ -1,3 +1,4 @@
+
 import 'package:quiz_app/src/models/quiz_answare.dart';
 import 'package:quiz_app/src/models/quiz_question.dart';
 
@@ -57,3 +58,4 @@ final List<QuizQuestion> quizQuestions = [
     ],
   ),
 ];
+

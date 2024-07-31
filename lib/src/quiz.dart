@@ -22,6 +22,12 @@ class _QuizState extends State<Quiz> {
     activeScreen = StartScreen(onStartButtonPressed: switchScreen);
   }
 
+  void goToHomePage() {
+    setState(() {
+      activeScreen = StartScreen(onStartButtonPressed: switchScreen);
+    });
+  }
+
   void switchScreen(){
     setState(() {
       activeScreen = QuestionsScreen(onEndQuiz: goToResults,);
@@ -30,7 +36,7 @@ class _QuizState extends State<Quiz> {
 
   void goToResults() {
     setState(() {
-      activeScreen = ResultScreen();
+      activeScreen = ResultScreen(onRestartQuiz: goToHomePage,);
     });
   }
 

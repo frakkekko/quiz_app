@@ -17,6 +17,14 @@ class QuizQuestion {
     userAnsware = answare;
   }
 
+  QuizAnsware getCorrectAnsware() {
+    return answers.firstWhere(
+      (answare) {
+        return answare.isCorrectAnsware;
+      },
+    );
+  }
+
   void reset() {
     userAnsware = null;
   }
